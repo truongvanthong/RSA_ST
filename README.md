@@ -31,10 +31,39 @@ $$\phi(n) = (17-1) \times (29-1) = 448$$
 Một số thích hợp cho e là 3 (Vì 3 là số nguyên tố và 3 không chia hết cho $448$) <br>
         $\rightarrow e = 3$
 
-5. Tính $d$ sao cho $d \times e \equiv 1 \pmod{\phi(n)}$.
-- Để tìm $d,$ ta cần giải phương trình $3d \equiv 1 \pmod{448}$ <br>
-        $\rightarrow d = 299$
+5. Tính $d$ sao cho $d \times e \equiv 1 \pmod{\phi(n)}$. <br>
+    Để tìm $ d $ ta cần giải phương trình $ 3d \equiv 1 \pmod{448} $ (với $ e = 3 $ và $ \phi(n) = 448 $). 
 
+    - Thuật toán Euclid mở rộng
+
+        Mục tiêu chính của thuật toán là tìm $d$ sao cho:
+        $$3d + 448x = 1$$
+
+        Bắt đầu bằng việc tìm UCLN của 448 và 3:
+
+        1. Bước 1:
+        $$448 = 3 \times 149 + 1$$
+        $$\text{Trong đó, phần dư là 1.}$$
+
+        2. Bước 2:
+        $$3 = 1 \times 3$$
+        $$\text{Với phần dư 0.}$$
+
+        Từ đây, ta có $UCLN(448, 3) = 1.$ Nhưng bước này không đủ để tìm giá trị của $d$. Ta cần tiếp tục sử dụng Thuật toán Euclid mở rộng.
+
+        Áp dụng Thuật toán Euclid mở rộng, chúng ta có thể biểu diễn phần dư $1$ từ bước $1$:
+
+        $$1 = 448 - 3 \times 149$$
+
+        Từ đây, ta có $d = -149$. Nhưng giá trị này là số âm. Ta cần một giá trị dương, vì vậy chúng ta sẽ cộng thêm $\phi(n)$ cho giá trị của $d$:
+
+        $$d = -149 + 448 = 299$$
+
+        Với việc khi nhân $d$ với $e = 3$ và lấy modulo $\phi(n) = 448$, kết quả sẽ bằng 1:
+
+        $$3 \times 299 \equiv 1 \pmod{448}$$
+
+        $ \rightarrow d = 299$
 
 *Vậy:*
 + Khoá công khai là cặp số $(n, e) = (493, 3)$.
@@ -77,23 +106,21 @@ Vậy, số $c = 64$ sau khi giải mã sẽ là $m = 4$.
 **Sơ đồ minh hoạ**:
 
 ```
+Người nhận
+   |
+   | (1) Tạo khoá công khai (n, e) và khoá bí mật (n, d)
+   |
+   | Công khai (n, e) cho tất cả (bao gồm người gửi)
+   ↓
 Người gửi
    |
-   | (1) Tạo khoá công khai (n, e) và gửi cho người nhận
+   | (2) Sử dụng khoá công khai (n, e) để mã hoá tin nhắn m thành c
    ↓
 Người nhận
    |
-   | (2) Nhận khoá công khai (n, e)
+   | (3) Nhận tin nhắn mã hoá c từ người gửi
    |
-Người gửi
-   |
-   | (3) Mã hoá m thành c sử dụng (n, e)
-   ↓
-Người nhận
-   |
-   | (4) Nhận c
-   |
-   | (5) Giải mã c thành m sử dụng (n, d)
+   | (4) Giải mã c thành m sử dụng khoá bí mật (n, d)
    ↓
    m
 ```
