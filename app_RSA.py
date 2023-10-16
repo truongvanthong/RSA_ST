@@ -69,9 +69,9 @@ def main():
     col1, col2 = st.columns(2)
     
     with col1:
-        p = st.number_input("Số nguyên tố p:", min_value=2, value=1013, step=1)
+        p = st.number_input("Số nguyên tố p:", min_value=2, value=17, step=1)
     with col2:
-        q = st.number_input("Số nguyên tố q:", min_value=2, value=1019, step=1)
+        q = st.number_input("Số nguyên tố q:", min_value=2, value=29, step=1)
     
     if p == q:
         st.warning("Vui lòng nhập hai số nguyên tố khác nhau!")
