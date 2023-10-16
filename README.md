@@ -32,7 +32,7 @@ Một số thích hợp cho e là 3 (Vì 3 là số nguyên tố và 3 không ch
         $\rightarrow e = 3$
 
 5. Tính $d$ sao cho $d \times e \equiv 1 \pmod{\phi(n)}$. <br>
-    Để tìm $ d $ ta cần giải phương trình $ 3d \equiv 1 \pmod{448} $ (với $ e = 3 $ và $ \phi(n) = 448 $). 
+    Để tìm $d$ ta cần giải phương trình $3d \equiv 1 \pmod{448}$ (với $e =3$ và $\phi(n) = 448$). 
 
     - Thuật toán Euclid mở rộng
 
@@ -63,7 +63,7 @@ Một số thích hợp cho e là 3 (Vì 3 là số nguyên tố và 3 không ch
 
         $$3 \times 299 \equiv 1 \pmod{448}$$
 
-        $ \rightarrow d = 299$
+        $\rightarrow d = 299$
 
 *Vậy:*
 + Khoá công khai là cặp số $(n, e) = (493, 3)$.
