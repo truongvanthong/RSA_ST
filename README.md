@@ -34,34 +34,29 @@ Một số thích hợp cho e là 3 (Vì 3 là số nguyên tố và 3 không ch
 5. Tính $d$ sao cho $d \times e \equiv 1 \pmod{\phi(n)}$. <br>
     Để tìm $d$ ta cần giải phương trình $3d \equiv 1 \pmod{448}$ (với $e =3$ và $\phi(n) = 448$). 
 
-    - Thuật toán Euclid mở rộng
+    Giải phương trình $3d \equiv 1 \pmod{448}$ thông qua thuật toán Euclid mở rộng.
 
-        Mục tiêu chính của thuật toán là tìm $d$ sao cho:
-        $$3d + 448x = 1$$
+    1. Tìm UCLN của $448$ và $3$:
 
-        Bắt đầu bằng việc tìm UCLN của 448 và 3:
+        $448 = 3 \times 149 + 1$
+        
+        $3 = 1 \times 3 + 0$
 
-        1. Bước 1:
-        $$448 = 3 \times 149 + 1$$
-        $$\text{Trong đó, phần dư là 1.}$$
+        Từ đây ta biết UCLN(448, 3) = 1.
 
-        2. Bước 2:
-        $$3 = 1 \times 3$$
-        $$\text{Với phần dư 0.}$$
+    2. Sử dụng thuật toán Euclid mở rộng:
 
-        Từ đây, ta có $UCLN(448, 3) = 1.$ Nhưng bước này không đủ để tìm giá trị của $d$. Ta cần tiếp tục sử dụng Thuật toán Euclid mở rộng.
+        Để biểu diễn phần dư $1$ từ phép chia đầu tiên, đã có:
 
-        Áp dụng Thuật toán Euclid mở rộng, chúng ta có thể biểu diễn phần dư $1$ từ bước $1$:
+        $1 = 448 - 3 \times 149$
 
-        $$1 = 448 - 3 \times 149$$
+        Từ biểu thức này, ta có thể thấy $d = -149$. Tuy nhiên, ta cần một giá trị $d$ dương nên cộng thêm $\phi(n)$ vào giá trị $d$ đã tìm:
 
-        Từ đây, ta có $d = -149$. Nhưng giá trị này là số âm. Ta cần một giá trị dương, vì vậy chúng ta sẽ cộng thêm $\phi(n)$ cho giá trị của $d$:
+        $d = -149 + 448 = 299$
 
-        $$d = -149 + 448 = 299$$
+    3. Xác nhận:
 
-        Với việc khi nhân $d$ với $e = 3$ và lấy modulo $\phi(n) = 448$, kết quả sẽ bằng 1:
-
-        $$3 \times 299 \equiv 1 \pmod{448}$$
+        $3 \times 299 \equiv 1 \pmod{448}$
 
         $\rightarrow d = 299$
 
@@ -165,3 +160,5 @@ Vậy, nếu tôi là một attacker, tôi sẽ muốn thu thập khoá bí mậ
 ---
 # Web App RSA:
 https://rsa-by-thong.streamlit.app/
+
+---
